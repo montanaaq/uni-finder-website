@@ -1,0 +1,219 @@
+.center {
+    display: flex;
+    justify-content: center;
+}
+.header {
+    width: 75%;
+    height: 10vh;
+    border-bottom: .5px solid rgb(0, 0, 0, 0.3);
+    display: flex;
+    padding-left: 20px;
+    padding-right: 20px;
+    flex-direction: row;
+    align-items: center;
+}
+.logo_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25px;
+}
+.header img {
+    width: 300px;
+    height: 75px;
+}
+.header h1 {
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 32px;
+}
+.location,
+.academic,
+.telegram_bot {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-right: 30px;
+}
+.academic,
+.location,
+.telegram_bot {
+    position: relative;
+    color: var(--text-color);
+    transition: color 1s;
+    cursor: pointer;
+    background:
+    linear-gradient(to right, #25aae1, #04befe),
+    linear-gradient(
+      to right,
+      #3f86ed,
+      #4481eb
+  );
+  background-size: 100% 2px, 0 2px;
+  background-position: 100% 100%, 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 400ms;
+}
+.location:hover,
+.academic:hover,
+.telegram_bot:hover {
+    background-size: 0 2px, 100% 2px;
+}
+
+.academic :not(p),
+.location :not(p),
+.telegram_bot :not(p) {
+    margin-right: 3px;
+    margin-top: 1px;
+}
+.location .iconify,
+.academic .iconify,
+.telegram_bot .iconify {
+    font-size: 30px;
+}
+.links {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+   }
+  
+.modal_content {
+  position: relative;
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 30px;
+  border: 1px solid #888;
+  border-radius: 15px;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+.modal_content h2 {
+  font-size: 32px;
+  font-weight: 800;
+  margin: 0;
+}
+.modal_content p {
+  margin-bottom: 30px;
+}
+.iconify_cross {
+  position: absolute;
+  border: none;
+  right: 0;
+  top: 0;
+  margin-top: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: .3s;
+  opacity: .5;
+}
+.iconify_cross:hover {
+  opacity: 1;
+} 
+.save_button {
+    width: max-content;
+    padding: 0 200px 0 200px;
+    margin: auto;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    height: 50px;
+    text-align: center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 10px;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    background-image: linear-gradient(to right, #25aae1, #4481eb, #04befe, #3f86ed);
+    box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.2);
+}
+.save_button:hover {
+  animation: gradientAnim 1s infinite;
+}
+@keyframes gradientAnim {
+  from {
+  background-position: 100% 0;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+  } to {
+  background-position: 0% 100%;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+  }
+}
+.select_city {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+.city_input[type='search'] {
+    box-sizing: border-box;
+    text-indent: 10px;
+    border: .5px solid rgb(0, 0, 0, 0.3);
+    padding: 15px 0 15px 0;
+    margin-bottom: 10px;
+    width: 600px;
+    border-radius: 2.5px;
+    color: var(--text-color);
+    font-size: 16px;
+    background-color: transparent;
+    position: relative;
+}
+.search_icon {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    margin-right: 20px;
+    margin-top: 7.5px;
+    top: center;
+}
+.city_input:hover {
+    transition: .1s ease-in-out;
+    border: .5px solid blue;
+    color: rgb(0, 100, 206);
+}
+.city_input:focus {
+    outline: none;
+}
+@media (max-width: 767px) {
+    .logo_container img {
+      width: 55px;
+      height: 50px;
+    }
+    .logo_container h1 {
+      font-size: 24px;
+    }
+    .academic p,
+    .location p {
+      font-size: 14px;
+      margin-right: 5px;
+    }
+    .location,
+    .academic {
+      margin-right: 2.5px;
+    }
+    .location .iconify,
+    .academic .iconify {
+        font-size: 24px;
+    }
+  }

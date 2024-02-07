@@ -1,0 +1,21 @@
+.head_info,
+.subjects,
+.footer_info {
+    margin-left: 200px;
+    margin-right: 175px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    line-height: 1.5;
+    font-size: 18px;
+}
+.footer_info {
+    margin-top: 50px;
+}
+.info_subject {
+    opacity: .8;
+    position: relative;
+    cursor: pointer;
+}
+.info_subject:hover {
+    opacity: 1;
+}

@@ -121,11 +121,11 @@ const MainContainer: FC<MainContainerProps> = ({ selectedCity }) => {
     secondColumn: ColumnType[],
     thirdColumn: ColumnType[]
   ) => {
-    let subjects = []
+    const subjects = []
     subjects.push(firstColumn, secondColumn, thirdColumn)
 
-    let subject = []
-    for (let i of subjects) {
+    const subject = []
+    for (const i of subjects) {
       for (let j = 0; j < 5; j++) {
         if (i[j] && i[j].score !== '') {
           subject.push(i[j])

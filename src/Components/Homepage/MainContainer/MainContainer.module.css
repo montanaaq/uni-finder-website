@@ -242,12 +242,15 @@ input:hover::-moz-placeholder {
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 15%;
    }
   
 .modal_content {
     position: relative;
     background-color: #fefefe;
-    margin: 15% auto;
     padding: 30px;
     border: 1px solid #888;
     border-radius: 15px;

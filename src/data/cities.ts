@@ -27,7 +27,6 @@ export const mostPopularCities: ICities[] = [
   {id: 21, name: 'Грозный'},
   {id: 22, name: 'Чита'},
   {id: 23, name: 'Элиста'},
-  {id: 24, name: 'Ульяносвк'},
-  {id: 25, name: 'Тверь'},
-  {id: 26, name: 'Буинск'}
+  {id: 24, name: 'Тверь'},
+  {id: 25, name: 'Буинск'}
 ]

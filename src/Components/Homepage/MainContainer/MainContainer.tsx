@@ -198,7 +198,7 @@ const MainContainer: FC<MainContainerProps> = ({ selectedCity }) => {
     if (validateSubjects(firstColumn, secondColumn, thirdColumn)) {
       if (
         confirm(
-          'Отправить данные ChatGPT? Если да, вам придётся подождать примерно 1 минуту.'
+          'Отправить данные ChatGPT? Если да, вам придётся подождать примерно 1 минуту. Заранее хотим предупредить, что данные могут быть не точные, так как ChatGPT может иметь недочёты.'
         )
       ) {
         await sendToGPT()

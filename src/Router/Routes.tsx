@@ -1,5 +1,5 @@
 import App from '../Components/App'
-import React, { ReactElement } from 'react'
+import { ReactElement } from 'react'
 
 interface IRoute {
   path: string

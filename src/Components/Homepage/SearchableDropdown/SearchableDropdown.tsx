@@ -71,7 +71,7 @@ const SearchableDropdown: FC<SearchableDropdownProps> = ({
       <div className={`${styles.options} ${isOpen ? styles.open : ''}`}>
         {filter(options).map((option, index) => {
           return (
-            <div
+              <div
               onClick={() => selectOption(option)}
               className={`${styles.option} ${
                 option[label] === selectedVal ? styles.selected : ''
@@ -79,7 +79,7 @@ const SearchableDropdown: FC<SearchableDropdownProps> = ({
               key={`${id}-${index}`}
             >
               {option[label]}
-            </div>
+            </div> 
           )
         })}
       </div>

@@ -26,7 +26,9 @@ const Header: FC = () => {
           <div className={styles.links}>
             <div className={styles.location} onClick={toggleModal}>
               <Icon icon="carbon:location" color="#333" />
-              <p>{selectedCity}</p>
+              {
+                selectedCity === '' ? <p>Выберите город</p> : <p>{selectedCity}</p>
+              }
             </div>
             {isPopupOpen && (
               <div className={styles.modal}>

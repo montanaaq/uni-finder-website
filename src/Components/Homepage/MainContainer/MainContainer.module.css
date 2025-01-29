@@ -189,7 +189,7 @@ input:hover::-moz-placeholder {
   box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.2);
 }
 .copy_button {
-  width: 90%;
+  width: 100%;
   font-size: 16px;
   font-weight: 600;
   color: #fff;
@@ -261,7 +261,6 @@ input:hover::-moz-placeholder {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding-top: 15%;
 }
 
 .modal_content {
@@ -280,6 +279,9 @@ input:hover::-moz-placeholder {
   font-size: 32px;
   font-weight: 800;
   margin: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 .modal_content p {
   margin-bottom: 30px;

@@ -1,7 +1,7 @@
 import { Icon } from '@iconify/react'
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
-import OpenAI from 'openai'
+import axios, { AxiosError } from 'axios'
 import { FC, SetStateAction, useRef, useState } from 'react'
 import styles from './MainContainer.module.css'
 
@@ -146,31 +146,39 @@ const MainContainer: FC<MainContainerProps> = ({ selectedCity }) => {
 		firstColumn,
 		secondColumn,
 		thirdColumn
-	)}\nТакже выдай ссылку на все предложенные университеты. Учитывай все мои предпочтения и предложения. И если есть ошибки или у тебя нет информации о каких либо университетах, то пиши напрямую мне, а не скрывай этого`
+	)}\nТакже выдай ссылку на все предложенные университеты. Учитывай все мои предпочтения и предложения. И если есть ошибки или у тебя нет информации о каких либо университетах, то пиши напрямую мне, а не скрывай этого. Также форматирование должно быть в виде html тэгов и не делай большие отступы, не используй много тэгов <br />`
 
 	const [result, setResult]: [result: string, setResult: any] = useState('')
 
-	const sendToGPT = async () => {
-		try {
-			const openai = new OpenAI({
-				apiKey: import.meta.env.VITE_APP_API_KEY,
-				dangerouslyAllowBrowser: true,
-			})
+	const sendToDeepSeek = async () => {
+        try {
+            const response = await axios.post(
+                'https://openrouter.ai/api/v1/chat/completions',
+                {
+                    model: 'deepseek/deepseek-r1',
+                    messages: [{ role: 'user', content: completed_msg }],
+                    stream: false, // Если не нужен потоковый ответ
+					max_tokens: 2056,
+                },
+                {
+                    headers: {
+                        'Authorization': `Bearer ${import.meta.env.VITE_APP_API_KEY}`,
+                        'Content-Type': 'application/json',
+                    },
+                }
+            );
 
-			const chatCompletion = await openai.chat.completions.create({
-				messages: [{ role: 'user', content: completed_msg }],
-				model: 'gpt-3.5-turbo',
-				max_tokens: 500,
-			})
-			setResult(chatCompletion.choices[0].message.content)
-		} catch (error: any) {
-			if (error.message.includes('403')) {
-				alert('Please turn on your VPN to access this resource.')
-			} else {
-				console.error('Error:', error)
+            setResult(response.data.choices[0].message.content);
+        } catch (error: any) {
+			if (error.response instanceof AxiosError) {
+				if (error.response && error.response.status === 403) {
+					alert('Please turn on your VPN to access this resource.');
+				} else {
+					console.error('Error:', error);
+				}
 			}
-		}
-	}
+        }
+    };
 	const closeModal = () => {
 		setIsModalOpen(false)
 	}
@@ -184,7 +192,8 @@ const MainContainer: FC<MainContainerProps> = ({ selectedCity }) => {
 
 		const formattedParagraphs = paragraphs.map(formatLinks)
 
-		const formattedResult = formattedParagraphs.join('<br>')
+		let formattedResult = formattedParagraphs.join('<br>')
+		formattedResult = formattedResult.replace('```html', '').replace('```', '')
 
 		return formattedResult
 	}
@@ -209,7 +218,7 @@ const MainContainer: FC<MainContainerProps> = ({ selectedCity }) => {
 					'Отправить данные ChatGPT? Если да, вам придётся подождать примерно 1 минуту. Заранее хотим предупредить, что данные могут быть не точные, так как ChatGPT может иметь недочёты.'
 				)
 			) {
-				await sendToGPT()
+				await sendToDeepSeek()
 				setIsModalOpen(!isModalOpen)
 			}
 		} else {
@@ -331,7 +340,6 @@ const MainContainer: FC<MainContainerProps> = ({ selectedCity }) => {
 				<div className={styles.modal}>
 					<div className={styles.modal_content}>
 						<h1>Результат</h1>
-						<br />
 						{mainResult ? (
 							<>
 								<p

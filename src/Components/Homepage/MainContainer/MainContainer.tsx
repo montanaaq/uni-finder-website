@@ -153,7 +153,7 @@ const MainContainer: FC<MainContainerProps> = ({ selectedCity }) => {
 	const sendToDeepSeek = async () => {
         try {
             const response = await axios.post(
-                'https://openrouter.ai/api/v1/chat/completions',
+                'https://api.zero2launch.com/generate-text',
                 {
                     model: 'deepseek/deepseek-r1',
                     messages: [{ role: 'user', content: completed_msg }],
